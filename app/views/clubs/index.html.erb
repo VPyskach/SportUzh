@@ -1,0 +1,351 @@
+    <%= render 'layouts/header' %>
+    
+        <!-- Banner Section Begins -->
+        <section class="banner wow animated fadeInLeft" data-wow-delay="0.5s">
+            <div class="container pr">
+                <div class="banskew"></div>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="bannerText">
+                            <h1 class="slideout"> Всі спорт клуби <br> Ужгорода </h1>
+                            <h3>Спорт — это физкультура, доведенная до абсурда.<br/>
+Лев Краткий</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Banner Section Ends -->
+
+        <!-- Scroll Down Section Begins -->
+        <section class="scrollDown scrollbtn">
+            <h6> <a href="#boxes"> <i class="fa fa-long-arrow-left" aria-hidden="true"></i> Крутіть вниз </a> </h6>
+        </section>
+        <!-- Scroll Down Section Ends -->
+
+    </div>
+
+    <div class="main">
+
+        
+        <!-- Class Section Begins -->
+        <section id="class" class="class pad-top-115 pad-bottom-115">
+            <div class="container pr">
+                <div class="secHead wow fadeInLeft animated" data-wow-delay="0.5s">
+                    <div class="skewpink"></div>
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="titleText">
+                                <h6 class="titleTop">Будь сильним, будь спортсменом</h6>
+                                <h2 class="sectionTitle">Спортивні <span>Клуби</span></h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row wow fadeInUp animated" data-wow-delay="0.5s">
+                    <div id="classbox" class="grid clickable clearfix">
+                        <% @clubs.order("created_at desc").each do |club| %>
+                            <div class="elemnt celement col-lg-3 col-md-4 col-sm-4 col-xs-12 transition">
+                                <a href="<%= club_path(club) %>">
+                                <div class="element">
+                                    <img src="<%= club.avatar.url(:medium) %>" alt="">
+                                    <h4> <%= club.name %> </h4>
+                                    <p> <%= truncate(strip_tags(club.desc), length: 85) %> </p>
+                                    <ul>
+                                        <li><i class="fa fa-users" aria-hidden="true"></i> <%= club.peoples %></li>
+                                        <li><i class="fa fa-user" aria-hidden="true"></i> <%= club.coachs %></li>
+                                        <li><i class="fa fa-money" aria-hidden="true"></i> <%= club.price %></li>
+                                    </ul>
+                                    <div class="element-btn"><button type="button" class="element-fill-btn">Детальніше</button></div>
+                                    <div class="views">
+                                        <i class="fa fa-eye" aria-hidden="true"></i> <%= club.views %>
+                                    </div>
+                                </div>
+                                </a>
+                            </div>
+                        <% end %>                        
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Class Section Ends -->
+
+        <!-- Gallery Section Begins -->
+        <section id="gallery" class="gallery pad-top-115 pad-bottom-115 parallax">
+            <div class="container pr">
+                <div class="secHead wow fadeInLeft animated" data-wow-delay="0.5s">
+                    <div class="skewpink"></div>
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="titleText">
+                                <h6 class="titleTop">наша галерея</h6>
+                                <h2 class="sectionTitle pad-bottom-60">Випадкові <span>Фото</span></h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row wow fadeInUp animated" data-wow-delay="0.5s">
+                    <div class="gallery-isotope col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        
+                       <div id="gallery-box" class="gallery-grid clickable clearfix">
+                            <% i = 0; %>
+                            <% @photos.order("created_at desc").each do |photo| %>
+                                <% if i % 2 == 0 %>
+                                    <div class="elemnt transition gymn yoga grid-item">
+                                        <div class="gImg">
+                                            <div class="gImgpath">
+                                                <img src="<%= photo.image.url(:medium) %>" alt="images" />
+                                            </div>
+                                            <a class="grouped_gallery" href="<%= photo.image.url %>">
+                                                <div class="circle-icon"><i class="fa fa-plus" aria-hidden="true"></i></div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                <% else %>
+                                    <div class="elemnt transition fitness yoga grid-item grid-item--width2">
+                                        <div class="gImg">
+                                            <div class="gImgpath">
+                                                <img src="<%= photo.image.url(:medium) %>" alt="images" />
+                                            </div>
+                                            <a class="grouped_gallery" href="<%= photo.image.url %>">
+                                                <div class="circle-icon"><i class="fa fa-plus" aria-hidden="true"></i></div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                <% end %>
+                            <% i = i + 1; %>
+                            <% end %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Gallery Section Ends -->
+
+        <!-- Call To Action Section Begins -->
+        <section id="call-to-action" class="call-to-action pad-top-115 pad-bottom-115">
+            <div class="actionBg parallax"></div>
+            <div class="container pr">
+                <div class="row">
+                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                        <p class="procap"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi t aliquip ex ea commodo consequat. </p>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 wow animated fadeInUp" data-wow-delay="0.5s">
+                        <a href="<%= new_club_path %>"><button type="button" class="fill-btn" style="margin-top: 70px;">Додати свій клуб</button></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Call To Action Section Ends -->
+
+        
+
+        <!-- testimonial Section Begins -->
+        <section id="testimonial" class="testimonial pad-top-115 pad-bottom-120">
+            <div class="testimonialBg parallax"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 wow animated fadeInUp" data-wow-delay="0.5s">
+                        <div class="titleText">
+                            <h6 class="titleTop">як говорять люди</h6>
+                            <h2 class="sectionTitle pad-bottom-60">ОСТАННІ <span>ВІДГУКИ</span></h2>
+                        </div>
+                        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-12"></div>
+                        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
+                            <div class="clientSlide">
+                                <div id="owl-testimonial" class="testimonial-slider">
+                                    <% @reviews.order("created_at desc").each do |review| %>
+                                    <div class="item">
+                                        <img src="<%= review.user.avatar.url(:medium) %>" alt="images" />
+                                        <div class="spacer left">
+                                            <div class="mask"></div>
+                                        </div>
+                                        <p><%= review.body %></p>
+                                        <h4> <%= review.user.name %> <%= review.user.last_name %> </h4>
+                                        <h5> Коментар до клубу: <strong><%= review.club.name %></strong> </h5>
+                                    </div>
+                                    <% end %>
+                                    <div class="item">
+                                        <img src="http://placehold.it/403x380" alt="images" />
+                                        <div class="spacer left">
+                                            <div class="mask"></div>
+                                        </div>
+                                        <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi t aliquip ex ea commodo consequat. </p>
+                                        <h4> Aena Deo </h4>
+                                        <h5> Lost 20 LBS in 2 Months </h5>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            <div class="col-lg-1 col-md-1 col-sm-1 col-xs-12"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- testimonial Section Ends -->
+
+        <!-- About Section Begins -->
+        <section id="about" class="about pad-top-110 pad-bottom-120">
+            <div class="container-fluid no-padding">
+                <div class="row no-margin">
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 wow animated fadeInLeft" data-wow-delay="0.5s">
+                        <figure><img src="<%= asset_path('about_img.png') %>" alt="image" /></figure>
+                    </div>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 pull-right wow animated fadeInRight" data-wow-delay="0.5s">
+                                <h6 class="titleTop"> Ласкаво просимо на наш сайт!</h6>
+                                <h2 class="sectionTitle">Що таке <span> Sport Uzh?</span></h2>
+                                <p> <b>Sport Uzh</b> - це платформа яка дозволяє dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+                                <p> Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt inculpa qui officia deserunt mollit anim id est laborum. </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- About Section Ends -->
+
+        <!-- Feature Section Begins -->
+        <section id="feature" class="feature pad-top-115 pad-bottom-115">
+            <div class="container pr">
+                <div class="secHead wow fadeInLeft animated" data-wow-delay="0.5s">
+                    <div class="skewpink"></div>
+                    <div class="row">
+                        <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                            <div class="titleText">
+                                <h6 class="titleTop">4 кроки для досягнення мети</h6>
+                                <h2 class="sectionTitle pad-bottom-60"><span>Наші Переваги</span></h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 wow fadeInUp animated" data-wow-delay="0.5s">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 feBox">
+                            <i class="fIcons flaticon-fitness-bracelet"></i>
+                            <h4> Duis aute irure dolor in </h4>
+                            <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 feBox">
+                            <i class="fIcons flaticon-bosu-ball"></i>
+                            <h4> Duis aute irure dolor in </h4>
+                            <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 feBox">
+                            <i class="fIcons flaticon-waist"></i>
+                            <h4> Duis aute irure dolor in </h4>
+                            <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 feBox">
+                            <i class="fIcons flaticon-trainer-rod"></i>
+                            <h4> Duis aute irure dolor in </h4>
+                            <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Feature Section Ends -->
+
+        
+
+        <!-- footer Section Begins -->
+        <section id="footer" class="footer pad-top-120 pad-bottom-120">
+            <div class="footerBg"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="footer_logo">
+                            <figure><img src="<%= asset_path('footer_logo.png') %>" alt="image" /></figure>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                        <div class="contact-form btm-brdr">
+                            <div class="form-Box">
+                                <input type="text" placeholder="Имя" class="b_effect" />
+                                <span class="focus-border">
+                                    <i></i>
+                                </span>
+                            </div>
+                            <div class="form-Box">
+                                <input type="text" placeholder="Email" class="b_effect" />
+                                <span class="focus-border">
+                                    <i></i>
+                                </span>
+                            </div>
+                            <div class="form-Box">
+                                <textarea placeholder="Повідомлення" class="b_effect"></textarea>
+                                <span class="focus-border">
+                                    <i></i>
+                                </span>
+                            </div>
+                            <div class="form-Box">
+                                <input type="submit" value="Відправити" class="fill-btn" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                        <div class="contact-address btm-brdr">
+                            <h4 class="fTitle"> Наші <span>Контакти</span> </h4>
+                            <ul>
+                                <li> <i class="fa fa-phone" aria-hidden="true"></i> <span>+380 50 000 000 00</span> </li>
+                                <li> <i class="fa fa-map-marker" aria-hidden="true"></i> <span>Ужгород, Закарпатська область, 88000</span> </li>
+                                <li>
+                                    <a href="#"> <i class="fa fa-envelope-o" aria-hidden="true"></i> <span>info@example.com</span> </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                        <div class="subscribe btm-brdr">
+                            <h4 class="fTitle"> Підпишіться <span>на розссилку</span> </h4>
+                            <form>
+                                <input type="text" placeholder="Example@example.com" />
+                                <button type="button" class="fill-btn">відправити</button>
+                            </form>
+                        </div>
+                        <div class="social-icons">
+                            <h4 class="fTitle"> Ми в <span>Соц.мережах</span> </h4>
+                            <ul>
+                                <li>
+                                    <a href="'#" target="_blank"> <i class="fa fa-facebook" aria-hidden="true"></i> </a>
+                                </li>
+                                <li>
+                                    <a href="'#" target="_blank"> <i class="fa fa-twitter" aria-hidden="true"></i> </a>
+                                </li>
+                                <li>
+                                    <a href="'#" target="_blank"> <i class="fa fa-youtube-play" aria-hidden="true"></i> </a>
+                                </li>
+                                <li>
+                                    <a href="'#" target="_blank"> <i class="fa fa-instagram" aria-hidden="true"></i> </a>
+                                </li>
+                                <li>
+                                    <a href="'#" target="_blank"> <i class="fa fa-google-plus" aria-hidden="true"></i> </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- footer Section Ends -->
+
+        <!-- copyright Section Begins -->
+        <section id="copyright" class="copyright">
+            <div class="container wow animated fadeInUp" data-wow-delay="0.5s">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <h6> © 2017 sport clubs in uzhhorod </h6>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- copyright Section Ends -->
+
+        <!-- Back to top Section Begins -->
+        <a href="javascript:void(0);" class="back-to-top"><i class="fa fa-long-arrow-up" aria-hidden="true"></i></a>
+        <!-- Back to top Section Ends -->
+
+    </div>

@@ -1,0 +1,12 @@
+<br><br>
+<h4>Додати фото до галереї</h4>
+<br>
+<%= form_for :photos, url: upload_image_path(:id => @club.id), html: { multipart: true } do |f| %>
+
+	<%= file_field_tag "images[]", type: :file, :"data-height" => "200", multiple: true %>
+		<br>			
+	<%= f.button :submit, class: "btn btn-theme btn-success" do %> 
+		<i class='fa fa-plus bordered-right'></i> <%= t('Додати фото до галереї') %>
+	<% end %>
+						
+<% end %>

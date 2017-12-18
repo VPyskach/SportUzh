@@ -1,0 +1,68 @@
+<style>
+  #photo-lable label {
+      font-size: 18px;
+      padding-bottom: 10px;
+  }
+  #photo-lable input {
+    padding-bottom: 35px;
+  }
+
+  .form-actions input {
+    bottom: 0px !important;
+    position: relative;
+    left: 50%;
+    margin: 0 auto;
+    display: block;
+    width: 300px;
+    margin-left: 15px;
+  }
+
+  .form-actions .fill-btn:hover {
+    background-color: #ffe402;
+    color: #201f1f;
+    box-shadow: 0px 10px 50px -10px #ffe402;
+  }
+</style>
+
+<%= simple_form_for(@club) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-Box">
+    <%= f.input :name, input_html: { class: 'b_effect' }, :label => false, :placeholder => "Назва клубу" %>
+  </div>
+  <div class="form-Box">
+    <%= f.input :peoples, input_html: { class: 'b_effect' }, :label => false, :placeholder => "Кількість членів" %>
+  </div>
+  <div class="form-Box">
+    <%= f.input :coachs, input_html: { class: 'b_effect' }, :label => false, :placeholder => "Кількість тренерів" %>
+  </div>
+  <div class="form-Box">
+    <%= f.input :size, input_html: { class: 'b_effect' }, :label => false, :placeholder => "Площа залу" %>
+  </div>
+  <div class="form-Box">
+    <%= f.input :dateofcreate, input_html: { class: 'b_effect' }, :label => false, :placeholder => "Дата створення" %>
+  </div>
+  <div class="form-Box">
+    <%= f.input :cofunder, input_html: { class: 'b_effect' }, :label => false, :placeholder => "Відповідальна особа, або засновник" %>
+  </div>
+  <div class="form-Box">
+    <%= f.input :price, input_html: { class: 'b_effect' }, :label => false, :placeholder => "Ціна" %>
+  </div>
+  <div class="form-Box">
+    <%= f.input :desc, input_html: { class: 'b_effect' }, :label => false, :placeholder => "Опис" %>
+  </div>
+  <div class="form-Box" id="photo-lable">
+    <%= f.input :avatar, as: :file, input_html: { class: 'b_effect' }, :label => "Основне фото" %>
+  </div>
+
+  <div class="form-actions text-center">
+    <%= f.button :submit, "Зберегти", class: "fill-btn" %>
+    <br>
+    <%= link_to 'Назад', clubs_path, class: "btn btn-theme btn-warning" %>
+  </div>
+<% end %>
+
+
+<script>
+  $("span.error").addClass("text-danger").css("text-align", "center").css("margin-top", "-18px").css("margin-bottom", "18px").css("position", "relative").css("display", "block");
+</script>

@@ -1,0 +1,81 @@
+<div id="site-head">
+
+        <!-- Top Header Section Begins -->
+        <!-- <div class="top-head">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <ul class=" pull-right">
+                            <li> <i class="fa fa-clock-o" aria-hidden="true"></i> 8.00 am – 10.00 pm </li>
+                            <li>
+                                <a href="#"> <i class="fa fa-user" aria-hidden="true"></i> Register </a>
+                            </li>
+                            <li>
+                                <a href="#"> <i class="fa fa-lock" aria-hidden="true"></i> Login </a>
+                            </li>
+                            <li>
+                                <a href="#"> <i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+        <!-- Top Header Section Ends -->
+
+        <!-- Header Section Begins -->
+        <header id="header" class="float-panel" data-top="0" data-scroll="100">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 main-menu">
+                        <div class="menuBar scrollbtn">
+                            <nav class="navbar navbar-default">
+                                <div class="skewbox"> </div>
+                                <div class="container-fluid">
+                                    <!-- Brand and toggle get grouped for better mobile display -->
+                                    <div class="navbar-header">
+                                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                                            <span class="sr-only">Toggle navigation</span>
+                                            <span class="icon-bar"></span>
+                                            <span class="icon-bar"></span>
+                                            <span class="icon-bar"></span>
+                                        </button>
+                                        <div class="logo">
+                                            <a class="navbar-brand" href="/"><img src="<%= asset_path('logo.png') %>" alt="logo" /></a>
+                                        </div>
+                                    </div>
+
+                                    <!-- Collect the nav links, forms, and other content for toggling -->
+                                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                                        <ul class="nav navbar-nav navbar-right">
+                                            <li><a href="#class">Клуби</a></li>
+                                            <li><a href="#gallery">Галерея</a></li>
+                                            <li><a href="#about">Про платформу</a></li>
+                                            <li><a href="#feature">Переваги</a></li>
+                                            <li><a href="#footer">Контакти</a></li>
+                                            <% if user_signed_in? %>
+                                                <li class="club-li">
+                                                    <a href="<%= new_club_path %>"><i class="fa fa-plus" aria-hidden="true"></i> Клуб</a>
+                                                </li>
+                                                <li>
+                                                    <%= link_to logout_path do %>  
+                                                        Вийти <i class="fa fa-sign-out" aria-hidden="true"></i>
+                                                    <% end %>   
+                                                </li>
+                                            <% else %>
+                                              <li>
+                                              <%= link_to(new_user_session_path) do %>  
+                                              <i class="fa fa-sign-in" aria-hidden="true"></i> Увійти
+                                              <% end %>
+                                              </li>
+                                            <% end %>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Header Section Ends -->

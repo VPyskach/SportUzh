@@ -1,0 +1,299 @@
+    <%= render 'layouts/header2' %>
+
+    <div class="main">
+
+        
+        <!-- Class Section Begins -->
+        <section id="class" class="class pad-top-115 pad-bottom-15">
+            <div class="container pr">
+                <div class="secHead wow fadeInLeft animated" data-wow-delay="0.5s">
+                    <div class="skewpink"></div>
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="titleText">
+                                <h6 class="titleTop">Інфомація про клуб</h6>
+                                <h2 class="sectionTitle">Клуб <span><%= @club.name %></span></h2>
+                                
+                                <div class="col-md-9">
+                                <ul class="club-about">
+                                    <li> <i class="fa fa-book" aria-hidden="true"></i>
+                                        <strong>Опис:</strong><br>
+                                        <span><%= @club.desc %></span>
+                                    </li>
+
+                                    <li><strong><i class="fa fa-users" aria-hidden="true"></i> - </strong>
+                                  <%= @club.peoples %> (Учасників клубу)</li>
+                                    <li><strong><i class="fa fa-user" aria-hidden="true"></i> - </strong>
+                                  <%= @club.coachs %> (Тренерів)</li>
+                                    <li><strong><i class="fa fa-arrows" aria-hidden="true"></i> - </strong>
+                                  <%= @club.size %> (Розмір залу)</li>
+                                    <li><strong><i class="fa fa-calendar-check-o" aria-hidden="true"></i> - </strong>
+                                  <%= @club.dateofcreate %> (Дата засновання)</li>
+                                    <li><strong><i class="fa fa-graduation-cap" aria-hidden="true"></i>
+
+- </strong>
+                                  <%= @club.cofunder %> (Відповідальна особа)</li>
+                                    <li><strong><i class="fa fa-money" aria-hidden="true"></i> - 
+</strong>
+                                  <%= @club.price %> </li>
+                                    <li><strong><i class="fa fa-pencil" aria-hidden="true"></i> - </strong>
+                                  <%= @club.user.name %> <%= @club.user.last_name %> (Автор посту)</li>
+                                    <li><strong><i class="fa fa-eye" aria-hidden="true"></i> - </strong>
+                                  <%= @club.views %> (переглядів)</li>
+                                    
+                                </ul>
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <img src="<%= @club.avatar.url(:medium) %>" alt="" style="border-radius: 50%;">
+                                    <br><br>
+                                    <% if (current_user and current_user.id == @club.user_id) %>
+                                      <%= link_to 'Видалити клуб', @club, method: :delete, data: { confirm: 'Ви впевнені?' }, class: "btn btn-theme btn-danger" %>
+                                      <%= link_to 'Редагувати', edit_club_path(@club), class: "btn btn-theme btn-warning" %>
+                                    <% end %>
+                                </div>
+                                <div class="col-md-12">
+                                    <% if (current_user and current_user.id == @club.user_id) %>
+                                        <%= render partial: 'clubs/addimages', :id => @club.id %>
+                                    <% end %>
+                                </div>
+                                <br>
+                                <br>
+                                
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row wow fadeInUp animated" data-wow-delay="0.5s">
+                    <div id="classbox" class="grid clickable clearfix">
+                        
+                                                  
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Class Section Ends -->
+
+        <!-- Gallery Section Begins -->
+        <section id="class" class="class pad-top-115 pad-bottom-15">
+            <div class="container pr">
+                <div class="secHead wow fadeInLeft animated" data-wow-delay="0.5s">
+                    <div class="skewpink"></div>
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="titleText">
+                                <h6 class="titleTop">наша галерея</h6>
+                                <h2 class="sectionTitle">Фото з клубу <span><%= @club.name %></span></h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row wow fadeInUp animated" data-wow-delay="0.5s">
+                    <div class="gallery-isotope col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        
+                       <div id="gallery-box" class="gallery-grid clickable clearfix">
+                            <% i = 0; %>
+                            <% @club.photos.order("created_at desc").each do |photo| %>
+                                <% if i % 2 == 0 %>
+                                    <div class="elemnt transition gymn yoga grid-item">
+                                        <div class="gImg">
+                                            <div class="gImgpath">
+                                                <img src="<%= photo.image.url(:medium) %>" alt="images" />
+                                            </div>
+                                            <a class="grouped_gallery" href="<%= photo.image.url %>">
+                                                <div class="circle-icon"><i class="fa fa-plus" aria-hidden="true"></i></div>
+                                            </a>
+                                        </div>
+                                        <% if (current_user and current_user.id == @club.user_id) %>
+                                         <%= link_to delete_image_path(:id => photo.id), data: { confirm: t('are_you_sure?'), method: :put}  do %>
+                                              <i class="fa fa-trash" aria-hidden="true"></i> Видалити
+                                          <% end %>
+                                        <% end %>
+                                    </div>
+                                <% else %>
+                                    <div class="elemnt transition fitness yoga grid-item grid-item--width2">
+                                        <div class="gImg">
+                                            <div class="gImgpath">
+                                                <img src="<%= photo.image.url(:medium) %>" alt="images" />
+                                            </div>
+                                            <a class="grouped_gallery" href="<%= photo.image.url %>">
+                                                <div class="circle-icon"><i class="fa fa-plus" aria-hidden="true"></i></div>
+                                            </a>
+                                        </div>
+                                        <% if (current_user and current_user.id == @club.user_id) %>
+                                         <%= link_to delete_image_path(:id => photo.id), data: { confirm: t('are_you_sure?'), method: :put}  do %>
+                                              <i class="fa fa-trash" aria-hidden="true"></i> Видалити
+                                          <% end %>
+                                        <% end %>
+                                    </div>
+                                <% end %>
+                            <% i = i + 1; %>
+                            <% end %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Gallery Section Ends -->
+
+        <!-- Class Section Begins -->
+        <section id="class" class="class pad-top-115 pad-bottom-30">
+            <div class="container pr">
+                <div class="secHead wow fadeInLeft animated" data-wow-delay="0.5s">
+                    <div class="skewpink"></div>
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="titleText">
+                                <h6 class="titleTop">Останні коментарі про клуб</h6>
+                                <h2 class="sectionTitle">Відгуки про <span><%= @club.name %> (<%= @club.reviews.count %>)</span></h2>
+                                
+                                  <% @club.reviews.order("created_at desc").each do |review| %>
+                                    <div class="row">
+                                      <div class="col-md-1">
+                                        <a href="/users/<%= review.user.id %>" data-turbolinks="false"> 
+                                          <img class="media-object img-circle thumb-sm" alt="64x64" src="<%= review.user.avatar.url(:medium) %>"> 
+                                        </a>
+                                      </div>
+                                      <div class="col-md-11" style="margin-left: -15px; margin-top: 10px;">
+                                        <h5><%= review.user.name %> <%= review.user.last_name %>
+                                                  <span class="text-muted" style="font-size: 13px;font-weight: 400;">
+                                              <%= review.created_at.strftime("%d %b. %Y") %> в <%= review.created_at.strftime("%H:%M") %></span>
+                                        </h5>
+                                              <p class="font-13 text-muted m-b-0" style="    font-size: 15px;
+    line-height: 25px;">
+                                                  <%= review.body %>
+                                              </p>
+                                      </div>
+                                    </div>      
+                                    
+                                  <% end %>
+                                <hr>
+                                <p>
+                                <% if current_user %>
+                                  <%= form_for([@club, @club.reviews.build]) do |f| %>
+                                    <div class="form-Box col-md-12">
+                                      <textarea rows="2" name="body" class="b_effect" placeholder="Написати коментар"></textarea>
+                                    </div>
+                                    <div class="form-Box" style="margin-left: 10px;">
+                                      <%= f.submit "Опублікувати", class: "btn btn-sm fill-btn" %>
+                                    </div>
+                                  <% end %>
+                                <% else %>
+                                <h4><a href="/users/sign_in"><strong>Увійдіть щоб залишити коментар</strong></a></h4>
+                                <% end %>
+                                </p>
+                                <br><br><br>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row wow fadeInUp animated" data-wow-delay="0.5s">
+                    <div id="classbox" class="grid clickable clearfix">
+                        
+                                                  
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Class Section Ends -->
+        
+
+        <!-- footer Section Begins -->
+        <section id="footer" class="footer pad-top-120 pad-bottom-120">
+            <div class="footerBg"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="footer_logo">
+                            <figure><img src="<%= asset_path('footer_logo.png') %>" alt="image" /></figure>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                        <div class="contact-form btm-brdr">
+                            <div class="form-Box">
+                                <input type="text" placeholder="Имя" class="b_effect" />
+                                <span class="focus-border">
+                                    <i></i>
+                                </span>
+                            </div>
+                            <div class="form-Box">
+                                <input type="text" placeholder="Email" class="b_effect" />
+                                <span class="focus-border">
+                                    <i></i>
+                                </span>
+                            </div>
+                            <div class="form-Box">
+                                <textarea placeholder="Повідомлення" class="b_effect"></textarea>
+                                <span class="focus-border">
+                                    <i></i>
+                                </span>
+                            </div>
+                            <div class="form-Box">
+                                <input type="submit" value="Відправити" class="fill-btn" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                        <div class="contact-address btm-brdr">
+                            <h4 class="fTitle"> Наші <span>Контакти</span> </h4>
+                            <ul>
+                                <li> <i class="fa fa-phone" aria-hidden="true"></i> <span>+380 50 000 000 00</span> </li>
+                                <li> <i class="fa fa-map-marker" aria-hidden="true"></i> <span>Ужгород, Закарпатська область, 88000</span> </li>
+                                <li>
+                                    <a href="#"> <i class="fa fa-envelope-o" aria-hidden="true"></i> <span>info@example.com</span> </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                        <div class="subscribe btm-brdr">
+                            <h4 class="fTitle"> Підпишіться <span>на розссилку</span> </h4>
+                            <form>
+                                <input type="text" placeholder="Example@example.com" />
+                                <button type="button" class="fill-btn">відправити</button>
+                            </form>
+                        </div>
+                        <div class="social-icons">
+                            <h4 class="fTitle"> Ми в <span>Соц.мережах</span> </h4>
+                            <ul>
+                                <li>
+                                    <a href="'#" target="_blank"> <i class="fa fa-facebook" aria-hidden="true"></i> </a>
+                                </li>
+                                <li>
+                                    <a href="'#" target="_blank"> <i class="fa fa-twitter" aria-hidden="true"></i> </a>
+                                </li>
+                                <li>
+                                    <a href="'#" target="_blank"> <i class="fa fa-youtube-play" aria-hidden="true"></i> </a>
+                                </li>
+                                <li>
+                                    <a href="'#" target="_blank"> <i class="fa fa-instagram" aria-hidden="true"></i> </a>
+                                </li>
+                                <li>
+                                    <a href="'#" target="_blank"> <i class="fa fa-google-plus" aria-hidden="true"></i> </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- footer Section Ends -->
+
+        <!-- copyright Section Begins -->
+        <section id="copyright" class="copyright">
+            <div class="container wow animated fadeInUp" data-wow-delay="0.5s">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <h6> © 2017 sport clubs in uzhhorod </h6>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- copyright Section Ends -->
+
+        <!-- Back to top Section Begins -->
+        <a href="javascript:void(0);" class="back-to-top"><i class="fa fa-long-arrow-up" aria-hidden="true"></i></a>
+        <!-- Back to top Section Ends -->
+
+    </div>

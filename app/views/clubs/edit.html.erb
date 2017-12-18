@@ -1,0 +1,135 @@
+    <%= render 'layouts/header2' %>
+
+    <div class="main">
+
+        
+        <!-- Class Section Begins -->
+        <section id="class" class="class pad-top-115 pad-bottom-55">
+            <div class="container pr">
+                <div class="secHead wow fadeInLeft animated" data-wow-delay="0.5s">
+                    <div class="skewpink"></div>
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="titleText">
+                                <h6 class="titleTop">Редагувати інформацію про клуб</h6>
+                                <h2 class="sectionTitle">Редагувати клуб<span> <%= @club.name %></span></h2>
+                                <div class="col-md-6 col-md-offset-3">
+	                                <%= render 'form', club: @club %>
+									
+									
+									<br><br>
+								</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row wow fadeInUp animated" data-wow-delay="0.5s">
+                    <div id="classbox" class="grid clickable clearfix">
+                        
+                                                  
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Class Section Ends -->
+        
+
+        <!-- footer Section Begins -->
+        <section id="footer" class="footer pad-top-120 pad-bottom-120">
+            <div class="footerBg"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="footer_logo">
+                            <figure><img src="<%= asset_path('footer_logo.png') %>" alt="image" /></figure>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                        <div class="contact-form btm-brdr">
+                            <div class="form-Box">
+                                <input type="text" placeholder="Имя" class="b_effect" />
+                                <span class="focus-border">
+                                    <i></i>
+                                </span>
+                            </div>
+                            <div class="form-Box">
+                                <input type="text" placeholder="Email" class="b_effect" />
+                                <span class="focus-border">
+                                    <i></i>
+                                </span>
+                            </div>
+                            <div class="form-Box">
+                                <textarea placeholder="Повідомлення" class="b_effect"></textarea>
+                                <span class="focus-border">
+                                    <i></i>
+                                </span>
+                            </div>
+                            <div class="form-Box">
+                                <input type="submit" value="Відправити" class="fill-btn" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                        <div class="contact-address btm-brdr">
+                            <h4 class="fTitle"> Наші <span>Контакти</span> </h4>
+                            <ul>
+                                <li> <i class="fa fa-phone" aria-hidden="true"></i> <span>+380 50 000 000 00</span> </li>
+                                <li> <i class="fa fa-map-marker" aria-hidden="true"></i> <span>Ужгород, Закарпатська область, 88000</span> </li>
+                                <li>
+                                    <a href="#"> <i class="fa fa-envelope-o" aria-hidden="true"></i> <span>info@example.com</span> </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                        <div class="subscribe btm-brdr">
+                            <h4 class="fTitle"> Підпишіться <span>на розссилку</span> </h4>
+                            <form>
+                                <input type="text" placeholder="Example@example.com" />
+                                <button type="button" class="fill-btn">відправити</button>
+                            </form>
+                        </div>
+                        <div class="social-icons">
+                            <h4 class="fTitle"> Ми в <span>Соц.мережах</span> </h4>
+                            <ul>
+                                <li>
+                                    <a href="'#" target="_blank"> <i class="fa fa-facebook" aria-hidden="true"></i> </a>
+                                </li>
+                                <li>
+                                    <a href="'#" target="_blank"> <i class="fa fa-twitter" aria-hidden="true"></i> </a>
+                                </li>
+                                <li>
+                                    <a href="'#" target="_blank"> <i class="fa fa-youtube-play" aria-hidden="true"></i> </a>
+                                </li>
+                                <li>
+                                    <a href="'#" target="_blank"> <i class="fa fa-instagram" aria-hidden="true"></i> </a>
+                                </li>
+                                <li>
+                                    <a href="'#" target="_blank"> <i class="fa fa-google-plus" aria-hidden="true"></i> </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- footer Section Ends -->
+
+        <!-- copyright Section Begins -->
+        <section id="copyright" class="copyright">
+            <div class="container wow animated fadeInUp" data-wow-delay="0.5s">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <h6> © 2017 sport clubs in uzhhorod </h6>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- copyright Section Ends -->
+
+        <!-- Back to top Section Begins -->
+        <a href="javascript:void(0);" class="back-to-top"><i class="fa fa-long-arrow-up" aria-hidden="true"></i></a>
+        <!-- Back to top Section Ends -->
+
+    </div>
+

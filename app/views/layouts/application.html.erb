@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <%= favicon_link_tag %>
+    <title> Sport Uzh </title>
+    <%= csrf_meta_tags %>
+    <!-- CSS -->
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <!-- JS -->
+    
+    <%= javascript_include_tag 'main/jquery.min' %>
+    <%= javascript_include_tag "application" %>
+  </head>
+
+  <body id="mainBox" class="creamBg" data-spy="scroll" data-target="#bs-example-navbar-collapse-1" data-offset="150">
+  	<p class="notice" style="position: absolute;"><%= notice %></p>
+   	<p class="alert" style="position: absolute;"><%= alert %></p>
+    <%= yield %>
+
+    <!-- Jquery Js -->
+    <%= javascript_include_tag 'main/bootstrap.min' %>
+    <%= javascript_include_tag 'main/element' %>
+    <%= javascript_include_tag 'main/modernizr' %>
+    <%= javascript_include_tag 'main/owl.carousel' %>
+    <%= javascript_include_tag 'main/jquery.localscroll-1.2.7-min' %>
+    <%= javascript_include_tag 'main/wow.min' %>
+    <%= javascript_include_tag 'main/imagesloaded.pkgd.min' %>
+    <%= javascript_include_tag 'main/waypoints.min' %>
+    <%= javascript_include_tag 'main/jquery.isotope.min' %>
+    <%= javascript_include_tag 'main/jquery.fancybox' %>
+  </body>
+</html>
+
+
+    
